@@ -1,0 +1,29 @@
+[
+  {
+    "key": "cmd+shift+f",
+    "command": "workbench.action.quickTextSearch"
+  },
+  {
+    "key": "shift+enter",
+    "command": "workbench.action.terminal.sendSequence",
+    "args": {
+      "text": "\\\r\n"
+    },
+    "when": "terminalFocus"
+  },
+  {
+    "key": "ctrl+;",
+    "command": "metaGo.gotoSmart",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+shift+;",
+    "command": "metaGo.selectSmart",
+    "when": "editorTextFocus"
+  },
+  {
+    "key": "ctrl+l",
+    "command": "metaGo.gotoLine",
+    "when": "editorTextFocus"
+  }
+]
