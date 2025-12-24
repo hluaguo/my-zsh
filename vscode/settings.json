@@ -1,4 +1,5 @@
 {
+  "$schema": "vscode://schemas/settings/user",
   // ===== APPEARANCE =====
   "workbench.colorTheme": "Tokyo Night Storm",
   "editor.minimap.enabled": false,
@@ -45,12 +46,25 @@
     "editor.defaultFormatter": "charliermarsh.ruff",
     "editor.formatOnSave": true,
     "editor.codeActionsOnSave": {
-      "source.organizeImports": "explicit"
+      "source.organizeImports": "explicit",
+      "source.fixAll.ruff": "explicit"
     }
   },
   "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.terminal.activateEnvironment": true,
+  "python.analysis.typeCheckingMode": "standard",
+  "python.analysis.autoImportCompletions": true,
+  "python.analysis.inlayHints.functionReturnTypes": true,
+  "python.analysis.inlayHints.variableTypes": false,
   "ruff.path": ["uv", "run", "ruff"],
   "ty.path": ["uv", "run", "ty"],
+
+  // ===== CODE RUNNER =====
+  "code-runner.executorMap": {
+    "python": "uv run python"
+  },
+  "code-runner.runInTerminal": true,
+  "code-runner.clearPreviousOutput": true,
 
   // ===== GO =====
   "[go]": {
@@ -61,5 +75,13 @@
     }
   },
   "go.lintTool": "golangci-lint",
-  "go.lintOnSave": "package"
+  "go.lintOnSave": "package",
+
+  // ===== COPILOT (inline only) =====
+  "github.copilot.enable": {
+    "*": true
+  },
+  "github.copilot.chat.enabled": false,
+  "chat.commandCenter.enabled": false,
+  "workbench.commandPalette.experimental.excludeChat": true
 }

@@ -10,11 +10,11 @@ fi
 
 # Install dependencies
 echo "Installing dependencies..."
-brew install fzf fd bat git
+brew install fzf fd bat git zoxide go uv 
 
 # Install applications
 echo "Installing applications..."
-brew install --cask visual-studio-code
+brew install --cask visual-studio-code google chrome maccy obsidian rectangle font-jetbrain-mono font-jetbrain-mono-nerd-font tree
 
 # Install oh-my-zsh if missing
 if [ ! -d "$HOME/.oh-my-zsh" ]; then
@@ -52,12 +52,6 @@ if [ -f ~/dotfiles/vscode/extensions.txt ]; then
     while read -r extension; do
         code --install-extension "$extension" --force
     done < ~/dotfiles/vscode/extensions.txt
-fi
-
-# Install iTerm2 color preset
-if [ -f ~/dotfiles/tokyo-night-storm.itermcolors ]; then
-    echo "Installing iTerm2 color preset..."
-    open ~/dotfiles/tokyo-night-storm.itermcolors
 fi
 
 echo "Done! Restart your terminal or run: source ~/.zshrc"
