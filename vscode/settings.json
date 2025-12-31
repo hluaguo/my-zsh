@@ -11,6 +11,10 @@
   "editor.smoothScrolling": true,
   "workbench.list.smoothScrolling": true,
   "explorer.compactFolders": false,
+  "editor.suggest.preview": true,
+  "workbench.tree.indent": 24,
+  "workbench.editor.tabActionCloseVisibility": false,
+  "breadcrumbs.enabled": false,
 
   // ===== FONT =====
   "editor.fontFamily": "JetBrainsMono Nerd Font Mono",
@@ -22,6 +26,9 @@
   // ===== FORMATTING =====
   "editor.defaultFormatter": "esbenp.prettier-vscode",
   "editor.formatOnSave": true,
+  "prettier.tabWidth": 2,
+  "prettier.useTabs": false,
+  "prettier.bracketSpacing": true,
 
   // ===== LSP / INTELLISENSE =====
   "editor.quickSuggestions": {
@@ -31,6 +38,18 @@
   },
   "editor.parameterHints.enabled": true,
   "editor.hover.delay": 300,
+
+  // ===== Extensions =====
+  "extensions.ignoreRecommendations": true,
+  "references.preferredLocation": "view",
+  "editor.codeLens": true,
+  "editor.codeLensFontSize": 12,
+
+  "code-runner.executorMap": {
+    "python": "uv run python"
+  },
+  "code-runner.runInTerminal": true,
+  "code-runner.clearPreviousOutput": true,
 
   // ===== SEARCH =====
   "search.exclude": {
@@ -50,21 +69,15 @@
       "source.fixAll.ruff": "explicit"
     }
   },
-  "python.defaultInterpreterPath": "${workspaceFolder}/.venv/bin/python",
+  "python.defaultInterpreterPath": "/opt/homebrew/bin/python3",
   "python.terminal.activateEnvironment": true,
   "python.analysis.typeCheckingMode": "standard",
   "python.analysis.autoImportCompletions": true,
   "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.variableTypes": false,
+  "python.analysis.enableCodeLensReferences": true,
   "ruff.path": ["uv", "run", "ruff"],
   "ty.path": ["uv", "run", "ty"],
-
-  // ===== CODE RUNNER =====
-  "code-runner.executorMap": {
-    "python": "uv run python"
-  },
-  "code-runner.runInTerminal": true,
-  "code-runner.clearPreviousOutput": true,
 
   // ===== GO =====
   "[go]": {
@@ -76,12 +89,30 @@
   },
   "go.lintTool": "golangci-lint",
   "go.lintOnSave": "package",
+  "go.inlayHints.parameterNames": true,
+  "go.inlayHints.variableTypes": true,
+  "go.inlayHints.assignVariableTypes": true,
 
-  // ===== COPILOT (inline only) =====
-  "github.copilot.enable": {
-    "*": true
+  "[clojure]": {
+    "diffEditor.ignoreTrimWhitespace": false,
+    "editor.wordSeparators": "\t ()\"':,;~@#$%^&{}[]`",
+    "editor.autoClosingBrackets": "always",
+    "editor.autoClosingOvertype": "always",
+    "editor.autoClosingQuotes": "always",
+    "editor.formatOnType": true,
+    "editor.autoIndent": "full",
+    "editor.formatOnPaste": true,
+    "editor.matchBrackets": "always",
+    "editor.guides.indentation": false,
+    "editor.parameterHints.enabled": false,
+    "editor.unicodeHighlight.allowedCharacters": {
+      " ": true,
+      "꞉": true
+    },
+    "editor.foldingStrategy": "indentation"
   },
-  "github.copilot.chat.enabled": false,
-  "chat.commandCenter.enabled": false,
-  "workbench.commandPalette.experimental.excludeChat": true
+
+  "github.copilot.enable": {
+    "*": false
+  }
 }
