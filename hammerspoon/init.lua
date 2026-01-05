@@ -68,3 +68,9 @@ hs.hotkey.bind({ "option", "cmd" }, "k", function() moveWindow(0.5, 0.5, 0.5, 0.
 
 -- Maximize: Option + Cmd + Return
 hs.hotkey.bind({ "option", "cmd" }, "return", function() moveWindow(0, 0, 1, 1) end)
+
+-- Move window to next monitor: Option + Cmd + M
+hs.hotkey.bind({ "option", "cmd" }, "m", function()
+	local win = hs.window.focusedWindow()
+	if win then win:moveToScreen(win:screen():next()) end
+end)
