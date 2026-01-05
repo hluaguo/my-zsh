@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-fi
-
 # Zsh setup
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME="bira"
@@ -61,10 +54,6 @@ export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Go
 export PATH="$HOME/go/bin:$PATH"
-
-# Clojure
-export JAVA_HOME=/opt/homebrew/opt/openjdk
-export PATH="$JAVA_HOME/bin:$PATH"
 
 # Aliases
 [ -f ~/.aliases ] && source ~/.aliases

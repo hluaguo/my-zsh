@@ -45,12 +45,6 @@
   "editor.codeLens": true,
   "editor.codeLensFontSize": 12,
 
-  "code-runner.executorMap": {
-    "python": "uv run python"
-  },
-  "code-runner.runInTerminal": true,
-  "code-runner.clearPreviousOutput": true,
-
   // ===== SEARCH =====
   "search.exclude": {
     "**/node_modules": true,
@@ -75,7 +69,6 @@
   "python.analysis.autoImportCompletions": true,
   "python.analysis.inlayHints.functionReturnTypes": true,
   "python.analysis.inlayHints.variableTypes": false,
-  "python.analysis.enableCodeLensReferences": true,
   "ruff.path": ["uv", "run", "ruff"],
   "ty.path": ["uv", "run", "ty"],
 
@@ -89,9 +82,6 @@
   },
   "go.lintTool": "golangci-lint",
   "go.lintOnSave": "package",
-  "go.inlayHints.parameterNames": true,
-  "go.inlayHints.variableTypes": true,
-  "go.inlayHints.assignVariableTypes": true,
 
   "[clojure]": {
     "diffEditor.ignoreTrimWhitespace": false,

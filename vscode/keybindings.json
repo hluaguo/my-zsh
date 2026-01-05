@@ -25,5 +25,15 @@
     "key": "ctrl+l",
     "command": "metaGo.gotoLine",
     "when": "editorTextFocus"
+  },
+  {
+    "key": "cmd+down",
+    "command": "cursorPageDown",
+    "when": "textInputFocus"
+  },
+  {
+    "key": "cmd+up",
+    "command": "cursorPageUp",
+    "when": "textInputFocus"
   }
 ]
