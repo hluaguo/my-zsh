@@ -88,6 +88,11 @@ log "Linking Hammerspoon config..."
 mkdir -p "$HOME/.hammerspoon"
 ln -sf "$DOTFILES_DIR/hammerspoon/init.lua" "$HOME/.hammerspoon/init.lua"
 
+# SketchyBar
+log "Linking SketchyBar config..."
+mkdir -p "$HOME/.config"
+ln -sf "$DOTFILES_DIR/sketchybar" "$HOME/.config/sketchybar"
+
 # iTerm2 settings
 if [ -f "$DOTFILES_DIR/tokyo-night-storm.itermcolors" ]; then
     log "iTerm2 color preset available at: $DOTFILES_DIR/tokyo-night-storm.itermcolors"

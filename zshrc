@@ -57,3 +57,4 @@ export PATH="$HOME/go/bin:$PATH"
 
 # Aliases
 [ -f ~/.aliases ] && source ~/.aliases
+

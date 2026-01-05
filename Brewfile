@@ -5,6 +5,11 @@ tap "homebrew/cask-fonts"
 # CLI Tools
 brew "git"
 cask "hammerspoon"
+tap "FelixKratz/formulae"
+brew "sketchybar"
+tap "koekeishiya/formulae"
+brew "yabai"
+brew "jq"
 brew "fzf"
 brew "fd"
 brew "bat"
@@ -12,6 +17,7 @@ brew "lazygit"
 brew "tree"
 brew "coreutils"  # for gtimeout
 brew "ripgrep"
+brew "fastfetch"
 
 # Languages & Runtimes
 brew "go"
