@@ -4,3 +4,5 @@ alias lg="lazygit"
 # Tools
 alias timeout=gtimeout
 alias reload="source ~/.zshrc"
+
+alias ll="ls -la"
