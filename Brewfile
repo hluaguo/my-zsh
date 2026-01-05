@@ -8,7 +8,6 @@ cask "hammerspoon"
 brew "fzf"
 brew "fd"
 brew "bat"
-brew "zoxide"
 brew "lazygit"
 brew "tree"
 brew "coreutils"  # for gtimeout
