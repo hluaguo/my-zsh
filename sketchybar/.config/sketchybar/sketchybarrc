@@ -1,0 +1,48 @@
+#!/bin/bash
+
+source "$CONFIG_DIR/colors.sh"
+
+ITEM_DIR="$CONFIG_DIR/items"
+PLUGIN_DIR="$CONFIG_DIR/plugins"
+FONT="JetBrainsMono Nerd Font"
+
+sketchybar --bar \
+  height=40 \
+  color=$BAR_COLOR \
+  position=top \
+  sticky=on \
+  padding_right=10 \
+  padding_left=10 \
+  y_offset=6 \
+  margin=8 \
+  corner_radius=12 \
+  shadow=on
+
+sketchybar --default \
+  icon.font="$FONT:Bold:14.0" \
+  icon.color=$ICON_COLOR \
+  icon.padding_left=4 \
+  icon.padding_right=4 \
+  label.font="$FONT:Medium:13.0" \
+  label.color=$LABEL_COLOR \
+  label.padding_left=4 \
+  label.padding_right=4 \
+  background.height=28 \
+  background.corner_radius=10
+
+# Left
+source "$ITEM_DIR/spaces.sh"
+source "$ITEM_DIR/front_app.sh"
+
+# Right
+source "$ITEM_DIR/now_playing.sh"
+sketchybar --add item spacer_1 right --set spacer_1 icon="|" icon.color=$GREY icon.padding_left=8 icon.padding_right=8 background.drawing=off label.drawing=off
+source "$ITEM_DIR/calendar.sh"
+sketchybar --add item spacer_2 right --set spacer_2 icon="|" icon.color=$GREY icon.padding_left=8 icon.padding_right=8 background.drawing=off label.drawing=off
+source "$ITEM_DIR/volume.sh"
+sketchybar --add item spacer_3 right --set spacer_3 icon="|" icon.color=$GREY icon.padding_left=8 icon.padding_right=8 background.drawing=off label.drawing=off
+source "$ITEM_DIR/battery.sh"
+
+sketchybar --add event aerospace_workspace_change
+sketchybar --hotload on
+sketchybar --update
