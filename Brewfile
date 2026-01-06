@@ -4,11 +4,10 @@ tap "homebrew/cask-fonts"
 
 # CLI Tools
 brew "git"
-cask "hammerspoon"
 tap "FelixKratz/formulae"
 brew "sketchybar"
-tap "koekeishiya/formulae"
-brew "yabai"
+tap "nikitabobko/tap"
+cask "aerospace"
 brew "jq"
 brew "fzf"
 brew "fd"
@@ -18,6 +17,7 @@ brew "tree"
 brew "coreutils"  # for gtimeout
 brew "ripgrep"
 brew "fastfetch"
+brew "stow"
 
 # Languages & Runtimes
 brew "go"
@@ -33,3 +33,4 @@ cask "obsidian"
 # Fonts
 cask "font-jetbrains-mono"
 cask "font-jetbrains-mono-nerd-font"
+cask "font-sketchybar-app-font"
