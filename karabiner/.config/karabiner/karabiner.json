@@ -1,0 +1,41 @@
+{
+    "profiles": [
+        {
+            "complex_modifications": {
+                "rules": [
+                    {
+                        "description": "Prevent Option from typing special characters (for AeroSpace)",
+                        "manipulators": [
+                            {
+                                "conditions": [
+                                    {
+                                        "name": "aerospace_enabled",
+                                        "type": "variable_if",
+                                        "value": 1
+                                    }
+                                ],
+                                "from": {
+                                    "any": "key_code",
+                                    "modifiers": {
+                                        "mandatory": ["option"],
+                                        "optional": ["shift", "caps_lock"]
+                                    }
+                                },
+                                "to": [
+                                    {
+                                        "key_code": "$(FROM_KEY_CODE)",
+                                        "modifiers": ["option"]
+                                    }
+                                ],
+                                "type": "basic"
+                            }
+                        ]
+                    }
+                ]
+            },
+            "name": "Default profile",
+            "selected": true,
+            "virtual_hid_keyboard": { "keyboard_type_v2": "ansi" }
+        }
+    ]
+}
