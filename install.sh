@@ -2,7 +2,6 @@
 set -e
 
 DOTFILES_DIR="$HOME/dotfiles"
-BACKUP_DIR="$HOME/.dotfiles_backup/$(date +%Y%m%d_%H%M%S)"
 
 # Colors
 RED='\033[0;31m'
@@ -13,16 +12,6 @@ NC='\033[0m'
 log() { echo -e "${GREEN}[+]${NC} $1"; }
 warn() { echo -e "${YELLOW}[!]${NC} $1"; }
 error() { echo -e "${RED}[x]${NC} $1"; exit 1; }
-
-# Backup existing file if it exists and is not a symlink
-backup_file() {
-    local file="$1"
-    if [ -f "$file" ] && [ ! -L "$file" ]; then
-        mkdir -p "$BACKUP_DIR"
-        cp "$file" "$BACKUP_DIR/"
-        warn "Backed up $file to $BACKUP_DIR/"
-    fi
-}
 
 log "Starting dotfiles installation..."
 
@@ -55,43 +44,36 @@ if [ ! -d "$ZSH_CUSTOM/plugins/fzf-tab" ]; then
     git clone https://github.com/Aloxaf/fzf-tab "$ZSH_CUSTOM/plugins/fzf-tab"
 fi
 
-# Backup and symlink dotfiles
-log "Creating symlinks..."
-backup_file "$HOME/.zshrc"
-backup_file "$HOME/.aliases"
+# Remove existing symlinks/files before stowing
+log "Cleaning up existing configs..."
+rm -f "$HOME/.zshrc" "$HOME/.aliases"
+rm -rf "$HOME/.config/sketchybar"
+rm -rf "$HOME/.config/aerospace"
+rm -f "$HOME/.config/karabiner/karabiner.json"
+rm -f "$HOME/Library/Application Support/Code/User/settings.json"
+rm -f "$HOME/Library/Application Support/Code/User/keybindings.json"
 
-ln -sf "$DOTFILES_DIR/zshrc" "$HOME/.zshrc"
-ln -sf "$DOTFILES_DIR/aliases" "$HOME/.aliases"
+# Create necessary directories
+mkdir -p "$HOME/.config/karabiner"
+mkdir -p "$HOME/Library/Application Support/Code/User"
 
-# VS Code settings
-log "Linking VS Code settings..."
-VSCODE_USER_DIR="$HOME/Library/Application Support/Code/User"
-mkdir -p "$VSCODE_USER_DIR"
-
-backup_file "$VSCODE_USER_DIR/settings.json"
-backup_file "$VSCODE_USER_DIR/keybindings.json"
-
-ln -sf "$DOTFILES_DIR/vscode/settings.json" "$VSCODE_USER_DIR/settings.json"
-ln -sf "$DOTFILES_DIR/vscode/keybindings.json" "$VSCODE_USER_DIR/keybindings.json"
+# Use stow to symlink dotfiles
+log "Stowing dotfiles..."
+cd "$DOTFILES_DIR"
+stow -v zsh
+stow -v sketchybar
+stow -v aerospace
+stow -v karabiner
+stow -v vscode
 
 # Install VS Code extensions
 log "Installing VS Code extensions..."
-if [ -f "$DOTFILES_DIR/vscode/extensions.txt" ]; then
+if [ -f "$DOTFILES_DIR/extensions.txt" ]; then
     while IFS= read -r extension || [ -n "$extension" ]; do
         [ -z "$extension" ] && continue
         code --install-extension "$extension" --force 2>/dev/null || warn "Failed to install: $extension"
-    done < "$DOTFILES_DIR/vscode/extensions.txt"
+    done < "$DOTFILES_DIR/extensions.txt"
 fi
-
-# Hammerspoon
-log "Linking Hammerspoon config..."
-mkdir -p "$HOME/.hammerspoon"
-ln -sf "$DOTFILES_DIR/hammerspoon/init.lua" "$HOME/.hammerspoon/init.lua"
-
-# SketchyBar
-log "Linking SketchyBar config..."
-mkdir -p "$HOME/.config"
-ln -sf "$DOTFILES_DIR/sketchybar" "$HOME/.config/sketchybar"
 
 # iTerm2 settings
 if [ -f "$DOTFILES_DIR/tokyo-night-storm.itermcolors" ]; then
@@ -102,4 +84,3 @@ fi
 echo ""
 log "Installation complete!"
 log "Run: source ~/.zshrc"
-[ -d "$BACKUP_DIR" ] && log "Backups saved to: $BACKUP_DIR"
